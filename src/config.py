@@ -5,6 +5,8 @@ DATA_PATH = "./data"
 DB_PATH = "./chroma_db"
 
 EMBED_MODEL = "BAAI/bge-large-zh"
+CHUNK_SIZE = 800
+CHUNK_OVERLAP = 100
 DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY')  # 替换为你的 DeepSeek API Key
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 LLM_MODEL = "deepseek-chat"
