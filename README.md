@@ -2,6 +2,38 @@
 
 基于 LangChain + ChromaDB，对天涯神贴楼主 kk 的帖子进行学习和分析，生成 RAG（检索增强生成）知识库问答系统。
 
+## 产品化扩展路线
+
+产品目标：给别人登录使用的 Web 产品。
+主应用：Next.js + TypeScript。
+RAG 服务：FastAPI + Python。
+当前阶段：先在 Python 项目里建立 manifest、answer pipeline、persistence schema。
+
+## Memory 持久化设计
+
+权威数据：PostgreSQL。
+临时状态：Redis。
+聊天消息、长期 memory、引用和任务状态要先有稳定的持久化边界，再接入前端产品壳。
+
+## 向量数据库优化与部署
+
+语义检索：Qdrant 或 Chroma。
+第一阶段继续保留 Chroma 的轻量优势，同时为后续切换到 Qdrant 预留 adapter 边界。
+
+## 对话分类存储
+
+PostgreSQL 存储会话分类、消息分类、任务分类和引用归属，保证产品侧可以按用户、知识库、主题和任务状态查询。
+
+## 多虚拟对话对象设计
+
+PostgreSQL 存储虚拟对象配置，RAG 服务根据虚拟对象加载不同 prompt、memory、知识库和回答策略。
+关系图谱：Neo4j。
+
+## 第一阶段重构计划
+
+当前阶段：先在 Python 项目里建立 manifest、answer pipeline、persistence schema。
+先把入库记录、回答流水线和持久化 schema 做清楚，再把 Next.js 产品壳接到稳定接口上。
+
 ## 项目简介
 
 本项目爬取并整理了天涯神贴楼主 kk 的经典帖子，使用 embedding 模型向量化存储，通过大模型实现智能问答。

@@ -193,3 +193,11 @@ Next.js：
 - ORM：默认 Prisma；如果以后需要更轻的 SQL 抽象，再考虑 Drizzle。
 - worker：默认 RQ；任务复杂后再考虑 Celery。
 - 文件存储：第一阶段本地磁盘；后续迁移对象存储。
+
+## Memory、分类和虚拟对象扩展设计
+
+- PostgreSQL 存用户、会话、消息、分类、虚拟对象、任务、引用。
+- 向量库存文档 chunk 和长期语义 memory。
+- Redis 存任务进度、短期缓存、流式临时状态。
+- Neo4j 存实体关系和观点图谱。
+- 聊天消息必须先进 PostgreSQL，向量库只负责召回。
