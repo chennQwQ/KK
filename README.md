@@ -81,11 +81,19 @@ $env:DEEPSEEK_API_KEY = "你的 API_KEY"
 
 ### 3. 运行
 
+当前 Streamlit UI：
+
 ```bash
 streamlit run app.py
 ```
 
-首次运行会自动构建知识库，之后直接加载。
+FastAPI 服务化入口（供后续 Next.js 前端调用）：
+
+```bash
+uvicorn src.api.app:app --reload
+```
+
+首次运行会自动构建知识库，之后直接加载。FastAPI 当前是服务底座，Streamlit 仍然是当前可用 UI。
 
 ## 使用方法
 
@@ -106,6 +114,7 @@ KK/
 ├── app.py              # Streamlit 应用入口
 ├── main.py             # 旧版命令行/实验入口，不作为当前推荐运行入口
 ├── src/                # 配置和 RAG 核心模块
+│   ├── api/            # FastAPI 服务化入口
 │   └── config.py       # 环境变量和模型配置
 ├── requirements.txt     # 依赖
 ├── data/               # kk 的帖子文件

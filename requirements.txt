@@ -1,4 +1,5 @@
 langchain-core
+langchain-classic
 langchain-community
 langchain-text-splitters
 chromadb
@@ -7,3 +8,6 @@ ollama
 pypdf
 streamlit
 neo4j
+fastapi
+uvicorn
+httpx

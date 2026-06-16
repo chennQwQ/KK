@@ -48,3 +48,4 @@ Thumbs.db
 .cache/
 .superpowers/
 .worktrees/
+.api_deps/
