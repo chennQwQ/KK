@@ -1,3 +1,9 @@
+"""Persistence schema planning contract.
+
+This module is an inventory for future PostgreSQL/SQLite migrations,
+not an executable migration or live database schema.
+"""
+
 TABLES: dict[str, tuple[str, ...]] = {
     "users": ("id", "email", "display_name", "created_at"),
     "knowledge_bases": ("id", "owner_id", "name", "visibility", "created_at"),
