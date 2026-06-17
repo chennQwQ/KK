@@ -128,7 +128,7 @@ pip install -r requirements.txt
 # 2. 配置 (system env 后续在前端实现)
 [Environment]::SetEnvironmentVariable("DEEPSEEK_API_KEY", "your_key", "Machine")
 
-# 3. 构建索引（后续在前端自动化运行）
+# 3. 构建索引（后续在前端输入后自动化运行）
 python -u rebuild_db.py
 
 # 4. 启动后端
@@ -182,6 +182,7 @@ cd web && npm.cmd install --legacy-peer-deps && npm.cmd run dev
 
 | Layer | Stack |
 |-------|-------|
+| RAG Framework | LangChain (core / classic / community) |
 | Backend | FastAPI + Uvicorn |
 | LLM | DeepSeek (`deepseek-chat`) via OpenAI SDK |
 | Embedding | BAAI/bge-large-zh |
