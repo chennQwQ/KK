@@ -52,6 +52,7 @@ Thumbs.db
 .api_deps/
 
 # 本地工具脚本
+tests/
 rebuild_db.py
 test_chat.py
 
