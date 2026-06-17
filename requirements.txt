@@ -6,8 +6,11 @@ chromadb
 sentence-transformers
 ollama
 pypdf
-streamlit
 neo4j
 fastapi
 uvicorn
 httpx
+openai
+pytesseract
+pdf2image
+Pillow

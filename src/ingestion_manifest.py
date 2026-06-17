@@ -4,6 +4,8 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
+from src.document_ingestion import DocumentSourceType, classify_document_source
+
 
 MANIFEST_FILE = "manifest.json"
 SUPPORTED_EXTENSIONS = {".pdf", ".txt"}
@@ -50,10 +52,22 @@ def build_manifest(data_path, settings):
                 "name": source.name,
                 "size": source.stat().st_size,
                 "sha256": _sha256(source),
+                "source_type": classify_document_source(source).value,
+                "structured_manifest": _structured_manifest_path(source),
             }
             for source in _source_files(data_path)
         ],
     }
+
+
+def _structured_manifest_path(source):
+    source_type = classify_document_source(source)
+    if source_type == DocumentSourceType.FORUM_QA:
+        return f"processed/forum/{source.stem}.manifest.json"
+    if source_type == DocumentSourceType.BOOK:
+        return f"processed/books/{source.stem}.manifest.json"
+
+    return None
 
 
 def manifest_path(db_path):

@@ -22,6 +22,7 @@ wheels/
 
 # 虚拟环境
 .venv/
+.venv*/
 venv/
 ENV/
 env/
@@ -49,3 +50,14 @@ Thumbs.db
 .superpowers/
 .worktrees/
 .api_deps/
+
+# Frontend
+web/.npm-cache/
+web/.npmrc
+web/.next/
+web/.env.local
+web/node_modules/
+web/dist/
+web/tsconfig.tsbuildinfo
+!web/src/lib/
+!web/src/lib/**
